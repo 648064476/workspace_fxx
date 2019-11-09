@@ -1,0 +1,28 @@
+spring:
+  data:
+    mongodb:
+      database: fei
+      host: localhost
+      port: 27017
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: localhost:9300
+  rabbitmq:
+    host: localhost
+    port: 5762
+    username: guest
+    password: guest
+  application:
+    name: feixinxin
+server:
+  port: 8081
+rocketmq:
+  # 生产者配置
+  producer:
+    groupName: ${spring.application.name}
+    namesrvAddr: 127.0.1:9876
+    default: false
+    transaction: true
+  consumer:
+    groupName: ${spring.application.name}
+    namesrvAddr: 127.0.1:9876

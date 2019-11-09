@@ -1,0 +1,59 @@
+2.4.2 自定义方法
+Spring Data 的另一个强大功能，是根据方法名称自动实现功能。
+
+比如：你的方法名叫做：findByTitle，那么它就知道你是根据title查询，然后自动帮你完成，无需写实现类。
+
+当然，方法名称要符合一定的约定：
+
+Keyword     	        Sample
+And	                    findByNameAndPrice
+Or          	         indByNameOrPrice
+Is	                    findByName
+Not	                    findByNameNot
+Between	                findByPriceBetween
+LessThanEqual       	findByPriceLessThan
+GreaterThanEqual    	findByPriceGreaterThan
+Before	                findByPriceBefore
+After	                findByPriceAfter
+Like	                findByNameLike
+StartingWith	        findByNameStartingWith
+EndingWith	            findByNameEndingWith
+Contains/Containing	    findByNameContaining
+In	                    findByNameIn(Collection<String>names)
+NotIn	                findByNameNotIn(Collection<String>names)
+Near	                findByStoreNear
+True	                findByAvailableTrue
+False	                findByAvailableFalse
+OrderBy	                findByAvailableTrueOrderByNameDesc
+
+
+
+合并查询
+即boolQuery，可以设置多个条件的查询方式。它的作用是用来组合多个Query，有四种方式来组合，must，mustnot，filter，should。
+must代表返回的文档必须满足must子句的条件，会参与计算分值；
+filter代表返回的文档必须满足filter子句的条件，但不会参与计算分值；
+should代表返回的文档可能满足should子句的条件，也可能不满足，有多个should时满足任何一个就可以，通过minimum_should_match设置至少满足几个。
+mustnot代表必须不满足子句的条件。
+
+es启动命令
+    docker run -d —name es -p 9200:9200 -p 9300:9300 elasticsearch
+    docker run -d --name es_head -p 9100:9100 mobz/elasticsearch-head:5
+
+rabbit启动命令
+    docker run -d --hostname my-rabbit --name rabbit -p 8080:15672 rabbitmq:management
+
+
+rockot启动命令
+    rocketmq server 容器
+
+
+mongodb启动命令
+    docker run -p 27017:27017 -v <LocalDirectoryPath>:/data/db --name docker_mongodb -d mongo
+
+
+kafka启动命令
+    docker-compose up -d 后台启动
+    文件在  /Users/gantingting/personal_space/学习资料/kafka
+
+
+
