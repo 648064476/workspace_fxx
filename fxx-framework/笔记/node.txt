@@ -1,0 +1,6 @@
+错误一：
+ClassNotFound:MethodInterceptor
+cglib没有添加到tomcat得classpath下，添加jar就ok
+
+org.objectweb.asm.Type报错
+maven添加 asm依赖
