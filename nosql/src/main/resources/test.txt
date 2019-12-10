@@ -7,7 +7,7 @@ Spring Data 的另一个强大功能，是根据方法名称自动实现功能�
 
 Keyword     	        Sample
 And	                    findByNameAndPrice
-Or          	         indByNameOrPrice
+Or          	        findByNameOrPrice
 Is	                    findByName
 Not	                    findByNameNot
 Between	                findByPriceBetween
