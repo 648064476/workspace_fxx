@@ -1,0 +1,39 @@
+spring知识点
+
+************************************************************************************
+invokeBeanFactoryPostProcessors --
+关键类
+BeanFactoryPostProcessor 是针对 BeanFactory 的扩展
+
+ApplicationContextInitializer
+BeanDefinitionRegistryPostProcessor 实现（BeanFactoryPostProcessor） 调用优先级高于父类 :注册bean postProcessBeanDefinitionRegistry
+BeanFactoryPostProcessor :回调postProcessBeanFactory
+
+registerBeanPostProcessors
+关键类
+BeanPostProcessor BeanPostProcessor 是针对 bean 的扩展
+
+
+************************************************************************************
+由于有一些事件会在ApplicationContext之前就创建了，所已不能使用@Bean来注册事件。事件的注册有以下两种方法：
+1、使用SpringApplication.addListeners(…​)或者SpringApplicationBuilder.listeners(…​)注册
+2、添加一个META-INF/spring.factories文件，然后在了按照以下格式添加要注册的事件：org.springframework.context.ApplicationListener=com.example.project.MyListener
+
+ContextRefreshedEvent 相似的还有：ContextStartedEvent、ContextClosedEvent、ContextStoppedEvent
+ApplicationEventMulticaster：应用事件广播器，用于发布事件到相应的监听器。
+LifecycleProcessor：生命周期处理器，用于处理生命周期事件。
+Lifecycle：定义生命周期控制方法的接口，特别是 SmartLifecycle，可以在 Spring IoC 容器刷新完毕时进行触发。
+ApplicationContextEvent：应用事件的基类。
+ApplicationListener，应用事件监听器，用于监听应用事件。
+
+
+
+
+
+
+
+
+
+
+分布式事务了解吗？你们是如何解决分布式事务问题的？
+

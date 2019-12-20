@@ -1,48 +1,31 @@
 package com.fxx;
 
 
+import com.fxx.config.ApplicationContextInitializerBeanProcessor.SpringApplicationContextInitializer;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+
 
 /**
  * @author gantingting
  */
 @SpringBootApplication
 public class Test {
-    public static void main (String[] args) {
-//        SpringApplication.run(Test.class, args);
-        User user = new User("anna@gmail.com", "1234");
-        String email = Optional.ofNullable(user)
-                .map(u -> u.getEmail()).orElse("default@gmail.com");
 
-        System.out.println(email);
-
-//        assertEquals(email, user.getEmail());
+    public void ApplicationContextInitializer () {
+//        加载自定义ApplicationContextInitializer
+        SpringApplication application = new SpringApplication(Test.class);
+        application.addInitializers(new SpringApplicationContextInitializer());
+        application.run(null);
     }
 
-    private static class User {
-        private String email;
-        private String name;
-        public User (String s, String s1) {
-            email = s;
-            name = s1;
-        }
+    public static void main (String[] args) {
+//        SpringApplication.run(Test.class, args);
 
-        public String getEmail () {
-            return email;
-        }
-
-        public void setEmail (String email) {
-            this.email = email;
-        }
-
-        public String getName () {
-            return name;
-        }
-
-        public void setName (String name) {
-            this.name = name;
-        }
+        ConcurrentHashMap<Object, Object> objectObjectConcurrentHashMap = new ConcurrentHashMap<>();
+        objectObjectConcurrentHashMap.put("a", "a");
+        System.out.println(objectObjectConcurrentHashMap);
     }
 }

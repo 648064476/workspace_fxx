@@ -14,6 +14,8 @@ import java.util.List;
 public class ProxyManager {
 
     public static <T> T createProxy(final Class<?> targetClass,final List<Proxy> proxyList){
-        return (T) Enhancer.create(targetClass, (MethodInterceptor) (targetObject, targetMethod, methodParam, methodProxy) -> new ProxyChina(targetClass, targetObject, targetMethod, methodProxy, methodParam, proxyList).doProxyChina());
+        return (T) Enhancer.create(targetClass, (MethodInterceptor) (targetObject, targetMethod, methodParam, methodProxy)
+                ->
+                new ProxyChina(targetClass, targetObject, targetMethod, methodProxy, methodParam, proxyList).doProxyChina());
     }
 }
